@@ -1,0 +1,40 @@
+{
+    "name": "wm",
+    "version": "1.0.0",
+    "description": "WM",
+    "author": "",
+    "private": true,
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "gulp": "^4.0.0",
+        "gulp-autoprefixer": "^4.1.0",
+        "gulp-babel": "^7.0.1",
+        "gulp-coffee": "^3.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-csso": "^3.0.1",
+        "gulp-order": "^1.1.1",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^4.0.1",
+        "gulp-sourcemaps": "^2.6.4",
+        "gulp-uglify": "^3.0.0",
+        "rimraf": "^2.6.2"
+    },
+    "dependencies": {},
+    "browserslist": [
+        "defaults",
+        "ie 11",
+        "opera 11"
+    ],
+    "babel": {
+        "presets": [
+            [
+                "env",
+                {
+                    "loose": true,
+                    "modules": false
+                }
+            ]
+        ]
+    }
+}

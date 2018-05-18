@@ -1,0 +1,6 @@
+.vs/
+.vscode/
+node_modules/
+.hgignore
+.gitignore
+package-lock.json

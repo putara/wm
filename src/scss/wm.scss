@@ -1,0 +1,323 @@
+@import '_global';
+
+.wm-desktop {
+    @extend %screen;
+    z-index: $z-index-workarea;
+}
+
+.wm-modal {
+    @extend %screen;
+}
+
+.wm-dlg {
+    font: $default-font-size/1 $default-font;
+    min-width: 20em;
+    position: fixed;
+    text-align: left;
+    opacity: 0;
+}
+
+.wm-dlg.wm-shown {
+    opacity: 1;
+//  opacity: 0;
+//  animation: wm-pop .6s forwards 1;
+}
+
+@keyframes wm-pop {
+    from {
+        opacity: 0;
+        transform: translate(0,-50%) scale(.001);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(0,10%) scale(1.2,1);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.wm-title {
+    @extend %reset;
+    @extend %user-select-none;
+    cursor: move;
+    overflow: hidden;
+    padding: 0 $size-75p;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-close {
+    &,
+    &:focus,
+    &:hover,
+    &:active,
+    &:hover:active {
+        @extend %reset-box-model;
+        @extend %reset-outline;
+        color: #fff;
+        cursor: pointer;
+        position: absolute;
+        text-align: center;
+    }
+    &::after {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.wm-body {
+    margin: $size-60p;
+
+    .wm-ml > .wm-ctl {
+        margin-left: .5em;
+    }
+    .wm-mr > .wm-ctl {
+        margin-right: .5em;
+    }
+}
+
+.wm-ok, .wm-cancel {
+    width: 7em;
+}
+
+.wm-ctl {
+    @extend %reset;
+    display: block;
+    margin: $size-30p 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.wm-ctl-form {
+    display: block;
+    box-sizing: border-box;
+
+    &,
+    &:focus,
+    &:hover,
+    &:active,
+    &:focus:hover,
+    &:focus:active,
+    &:hover:active {
+        @extend %reset-outline;
+    }
+}
+
+.wm-lbl {
+    cursor: default;
+}
+
+.wm-btn {
+    cursor: pointer;
+    line-height: 2em;
+    vertical-align: middle;
+    padding: 0 .5em;
+
+    &,
+    &:focus,
+    &:hover,
+    &:active,
+    &:focus:hover,
+    &:focus:active,
+    &:hover:active {
+        text-align: center;
+        text-decoration: none;
+    }
+
+    &.accept,
+    &.cancel {
+        width: 7em;
+    }
+}
+
+.wm-cmb {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+
+    & > select::-ms-expand {
+        display: none;
+    }
+    & > select {
+        @extend %reset-outline;
+        border: 0;
+        margin: 0;
+        padding: 2px 20px 2px 2px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: block;
+        width: 100%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+    }
+}
+
+.wm-textbox {
+    width: 100%;
+}
+
+.wm-edit {
+    line-height: 0; // workaround for a strange bug in IE/Edge
+    height: 2em;
+    padding: 2px 4px;
+}
+
+.wm-memo {
+    resize: none !important;
+    padding: 2px 4px;
+    line-height: normal;
+}
+
+%wm-flexbox {
+    clear: both;
+    display: flex;
+    align-items: center;
+}
+
+.wm-flex {
+    @extend %wm-flexbox;
+    flex-wrap: wrap;
+}
+
+.wm-flex-start {
+    @extend .wm-flex;
+    justify-content: flex-start;
+}
+
+.wm-flex-expand {
+    @extend .wm-flex;
+    justify-content: space-between;
+}
+
+.wm-footer {
+    @extend %wm-flexbox;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 0;
+    text-align: center;
+
+    .wm-ctl {
+        margin-left: .5em;
+        margin-right: .5em;
+    }
+}
+
+.wm-grp {
+    @extend %wm-flexbox;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: .7em 0 1em;
+    padding: .5em 1em .4em;
+    position: relative;
+
+    legend {
+        padding: 0 4px;
+        position: absolute;
+        line-height: 18px;
+        left: 5px;
+        top: -10px;
+
+        & ~ * {
+            width: 100%;
+        }
+    }
+}
+
+.wm-tab {
+    list-style: none;
+    background: none;
+    box-sizing: border-box;
+    position: relative;
+    height: 24px;
+    margin: 0;
+    padding: 2px 0 0;
+
+    > li {
+        @extend %user-select-none;
+        cursor: pointer;
+        display: block;
+        float: left;
+        position: relative;
+        width: auto;
+        box-sizing: border-box;
+        height: 21px;
+        line-height: 21px;
+        margin: 0;
+        padding: 0 10px;
+
+        & + li {
+            margin-left: -1px;
+        }
+
+        &.wm-active {
+            position: relative;
+
+            height: 24px;
+            margin-left: -2px;
+            margin-top: -2px;
+            margin-right: -1px;
+            padding-left: 11px;
+            padding-right: 11px;
+
+            &,
+            &:hover {
+                z-index: 2;
+            }
+        }
+
+        &:first-of-type {
+            margin-left: 2px;
+
+            &.wm-active {
+                margin-left: 0;
+                padding-right: 12px;
+            }
+        }
+
+        &:last-of-type {
+            &.wm-active {
+                margin-right: 0;
+                padding-right: 10px;
+            }
+        }
+    }
+}
+
+.wm-tabpage {
+    list-style: none;
+    background: none;
+    clear: both;
+    margin: 0 0 2px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    li {
+        box-sizing: border-box;
+        height: 100%;
+        padding: 12px;
+        width: 100%;
+        display: none;
+
+        &.wm-active {
+            display: block;
+        }
+    }
+}
+
+.wm-progress {
+    height: 17px;
+    line-height: 0;
+    width: 100%;
+    overflow: hidden;
+}

@@ -1,0 +1,8 @@
+syntax: regexp
+^node_modules/*
+syntax: glob
+.hgignore
+.gitignore
+package-lock.json
+.vs/*
+.vscode/*

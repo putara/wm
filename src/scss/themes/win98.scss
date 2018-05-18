@@ -1,0 +1,250 @@
+/** Windows 98 Theme **/
+
+@import '../_global';
+
+$colour-text: #000;
+$colour-dialog: #ccc;
+$colour-readonly: #ccc;
+$colour-highlight: #008;
+$colour-hotlight: #00c;
+
+.wm-modal {
+    background-color: $colour-overlay;
+}
+
+.wm-tm-win98 {
+
+%three-d-raised-flat {
+    background-color: $colour-dialog;
+    border: 1px solid;
+    border-color: #fff #000 #000 #fff;
+}
+
+%three-d-raised-thick {
+    @extend %three-d-raised-flat;
+
+    &::before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid;
+        border-color: #ddd #777 #777 #ddd;
+        box-sizing: border-box;
+        pointer-events: none;
+    }
+}
+
+%three-d-sunken-flat {
+    border: 1px solid;
+    border-color: #777 #fff #fff #777;
+}
+
+%three-d-sunken-thick {
+    border: 1px solid;
+    border-color: #000 #fff #fff #000;
+
+    &::before {
+        border: 1px solid;
+        border-color: #777 #ddd #ddd #777;
+    }
+}
+
+%three-d-sunken-button {
+    border: 1px solid #777;
+
+    &::before {
+        display: none;
+    }
+}
+
+.wm-dlg {
+    background-color: $colour-dialog;
+    border-width: 1px;
+    border-color: #ccc #000 #000 #ccc;
+    border-style: solid;
+    box-shadow: 1px 1px 7px rgba(0,0,0,.3);
+
+    &.wm-active {
+        box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border: 1px solid;
+        border-color: #fff #777 #777 #fff;
+        pointer-events: none;
+    }
+}
+
+.wm-title {
+    background: linear-gradient(90deg,#888,#bbb);
+    color: #ddd;
+    line-height: 23px;
+    padding: 0 29px 0 6px;
+    margin: 2px;
+}
+
+.wm-dlg.wm-active .wm-title {
+    background: linear-gradient(90deg,#008,#08c);
+    color: #fff;
+}
+
+.wm-close {
+    @extend %three-d-raised-thick;
+
+    height: 19px;
+    right: 2px;
+    top: 2px;
+    width: 20px;
+
+    &::after {
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath d='M1 2l4 4-4 4h2l3-3 3 3h2L7 6l4-4H9L6 5 3 2z'/%3E%3C/svg%3E") no-repeat center center;
+    }
+
+    &:hover:active {
+        @extend %three-d-sunken-thick;
+    }
+}
+
+.wm-body {
+    padding: 1px 2px;
+    margin: 8px 10px;
+}
+
+.wm-grp {
+    border: 2px groove #fff;
+
+    legend {
+        background-color: $colour-dialog;
+    }
+}
+
+.wm-btn {
+    @extend %three-d-raised-thick;
+
+    &:focus {
+        outline: 1px solid #000;
+    }
+
+    &:hover:active {
+        @extend %three-d-sunken-button;
+    }
+}
+
+.wm-cmb {
+    @extend %three-d-sunken-flat;
+
+    & > select {
+        padding-right: 23px;
+    }
+    &::before {
+        @extend %three-d-raised-flat;
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        width: 21px;
+        height: 100%;
+        top: 0;
+        right: 0;
+        box-sizing: border-box;
+    }
+    &:hover:active::before {
+        @extend %three-d-sunken-flat;
+    }
+    &::after {
+        right: 7px;
+        top: 50%;
+        margin-top: -3px;
+        height: 0;
+        width: 0;
+        border-color: currentColor transparent transparent;
+        border-style: solid;
+        border-width: 4px 4px 0;
+    }
+}
+
+.wm-textbox {
+    @extend %three-d-sunken-flat;
+}
+
+.wm-tab {
+    border-bottom: 1px solid #fff;
+
+    > li {
+        background-color: $colour-dialog;
+        border-style: solid;
+        border-width: 1px 1px 0 1px;
+        border-color: #fff #000 #000 #fff;
+        border-radius: 2px 4px 0 0;
+
+        &::before {
+            border-right: 1px solid #777;
+            content: '';
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        &:hover {
+            color: $colour-hotlight;
+        }
+    }
+}
+
+.wm-tabpage {
+    @extend %three-d-raised-thick;
+    border-top-width: 0;
+
+    &::before {
+        border-width: 0 1px 1px 0;
+    }
+}
+
+@mixin progress() {
+    background-color: $colour-dialog;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #777 #fff #fff #777;
+    padding: 1px;
+}
+
+@mixin progress-bar() {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    background: $colour-highlight;
+}
+
+.wm-progress {
+    @include progress;
+    -webkit-appearance: none;
+}
+
+.wm-dlg {
+    ::-ms-fill {
+        @include progress-bar;
+    }
+    ::-moz-progress-bar {
+        @include progress-bar;
+    }
+    ::-webkit-progress-bar {
+        @include progress;
+    }
+    ::-webkit-progress-value {
+        @include progress-bar;
+    }
+}
+
+}

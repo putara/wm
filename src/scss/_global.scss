@@ -1,0 +1,55 @@
+$z-index-workarea: -100;
+$colour-overlay: rgba(0,0,0,.4);
+
+$default-font: 'Segoe UI', sans-serif;
+$default-font-size: 13px;
+
+$size-30p: round($default-font-size * .3);
+$size-60p: round($default-font-size * .6);
+$size-75p: round($default-font-size * .75);
+
+%reset-box-model {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+%reset-outline {
+    outline: 0;
+}
+
+%reset-font {
+    font: inherit;
+    font-size: 100%;
+    text-align: left;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+%reset-colour {
+    background: transparent none;
+    color: inherit;
+}
+
+%reset {
+    @extend %reset-box-model;
+    @extend %reset-outline;
+    @extend %reset-font;
+}
+
+%user-select-none {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+%screen {
+    @extend %user-select-none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

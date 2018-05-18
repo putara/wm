@@ -1,0 +1,290 @@
+/** Windows 7 Theme **/
+
+@import '../_global';
+
+$colour-text: #000;
+$colour-dialog: #f0f0f0;
+$colour-readonly: #f8f8f8;
+
+.wm-modal {
+    background-color: $colour-overlay;
+}
+
+.wm-tm-win7 {
+
+.wm-dlg {
+    color: $colour-text;
+    background-color: rgba(224,248,255,.8);
+    border: 1px solid #555;
+    border-radius: 6px;
+    box-shadow: 2px 2px 10px rgba(119,119,119,.8),
+                1px 1px 1px #fff inset,
+                -1px -1px rgba(0,0,0,.2) inset;
+
+    &.wm-active {
+        background-color: rgba(176,240,255,.9);
+        box-shadow: 2px 2px 15px #777,
+                    1px 1px 1px #fff inset,
+                    -1px -1px rgba(0,0,0,.2) inset;
+    }
+}
+
+.wm-title {
+    padding-right: 50px;
+    line-height: 28px;
+    text-shadow: 0 0 5px #fff;
+}
+
+.wm-body {
+    background-color: $colour-dialog;
+    border: 1px solid #888;
+    border-radius: 1px;
+    margin-top: 0;
+    padding: 8px 12px;
+}
+
+.wm-grp {
+    border: 1px solid #999;
+    border-radius: 5px;
+
+    legend {
+        background-color: $colour-dialog;
+    }
+}
+
+.wm-close {
+    &::after {
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14' height='14'%3E%3Cdefs%3E%3ClinearGradient id='a'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='1' stop-color='%23ddd'/%3E%3C/linearGradient%3E%3ClinearGradient y2='12' x2='0' y1='3' gradientUnits='userSpaceOnUse' id='b' xlink:href='%23a'/%3E%3C/defs%3E%3Cpath d='M1 3l4 4-4 4 2 2 4-4 4 4 2-2-4-4 4-4-2-2-4 4-4-4z' fill='url%28%23b%29' stroke='%23535359' stroke-width='.4' stroke-linejoin='bevel'/%3E%3C/svg%3E") no-repeat center center;
+    }
+
+    &,
+    &:focus,
+    &:hover,
+    &:active,
+    &:hover:active {
+        border-style: solid;
+        border-color: #431422;
+        border-radius: 0 0 4px 4px;
+        border-width: 0 1px 1px;
+        line-height: 0;
+        height: 22px;
+        right: 8px;
+        top: 0;
+        text-shadow: 0 0 1px #000;
+        width: 42px;
+    }
+
+    &,
+    &:focus {
+        background: linear-gradient(#eaac9f,#df9587 50%,#b8432c 50%,#d6857b);
+    }
+
+    &:hover,
+    &:active {
+        background: linear-gradient(#fcccc2,#fba89a 50%,#d22302 50%,#e8a154);
+    }
+
+    &:hover:active {
+        background: linear-gradient(#d1a590,#c1856c 50%,#871900 50%,#c2a35d);
+    }
+
+    &,
+    &:focus {
+        box-shadow: 0 0 1px #fff inset;
+    }
+
+    &:hover,
+    &:active,
+    &:focus:hover,
+    &:hover:active,
+    &:focus:active {
+        box-shadow: 0 0 1px #fff inset,0 0 15px #fc8063;
+    }
+}
+
+.wm-btn,
+.wm-cmb > select {
+    &,
+    &:focus,
+    &:hover,
+    &:active,
+    &:active {
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 3px;
+    }
+
+    & {
+        border-color: #707070;
+        background: linear-gradient(#f2f2f2,#ebebeb 50%,#ddd 50%,#cfcfcf);
+        box-shadow: 0 0 1px #fff inset;
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+        border-color: #3c7fb1;
+    }
+
+    &:hover,
+    &:active {
+        background: linear-gradient(#ecf7fd,#d9f0fc 50%,#bee6fd 50%,#a7d9f5);
+    }
+
+    &:hover:active {
+        border-color: #2C628B;
+        background: linear-gradient(#e5f4fc,#c4e5f6 50%,#98d1ef 50%,#66b1d9);
+    }
+}
+
+.wm-btn {
+    &:focus,
+    &:active {
+        box-shadow: 0 0 2px 1px #2dd4ff inset;
+    }
+
+    &:hover:focus,
+    &:active:focus {
+        box-shadow: 0 0 1px #fff inset;
+    }
+
+    &:hover:active {
+        box-shadow: 0 0 2px 1px #9eb0ba inset;
+    }
+}
+
+.wm-ctl-form {
+    &.read-only {
+        background-color: $colour-readonly;
+    }
+}
+
+.wm-cmb {
+    & > select {
+        &:focus {
+            background: linear-gradient(#ecf7fd,#d9f0fc 50%,#bee6fd 50%,#a7d9f5);
+        }
+
+        &:hover:active {
+            box-shadow: 0 0 2px 1px #9eb0ba inset;
+        }
+    }
+
+    &::after {
+        right: 7px;
+        top: 50%;
+        margin-top: -3px;
+        height: 0;
+        width: 0;
+        border-color: currentColor transparent transparent;
+        border-style: solid;
+        border-width: 4px 4px 0;
+    }
+}
+
+.wm-textbox {
+    &,
+    &:hover,
+    &:focus {
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 3px;
+    }
+
+    & {
+        border-color: #abadb3 #dbdfe6 #e3e9ef #e2e3ea;
+    }
+
+    &:focus {
+        border-color: #3d7bad #a4c9e3 #b7d9ed #b5cfe7;
+    }
+
+    &:hover,
+    &:hover:focus {
+        border-color: #5794bf #b7d5ea #c7e2f1 #c5daed;
+    }
+}
+
+.wm-tab {
+    border-bottom: 1px solid #898c95;
+
+    > li {
+        background: linear-gradient(#f2f2f2,#ebebeb 50%,#ddd 50%,#cecece);
+        border: solid #898c95;
+        border-width: 1px 1px 0 1px;
+
+        &:hover {
+            background: linear-gradient(#ecf6fd,#d9f0fc 50%,#bee6fd 50%,#a7d9f5);
+            border-color: #3c7fb1 #3c7fb1 #898c95;
+        }
+
+        &.wm-active,
+        &.wm-active:hover {
+            background: #fff;
+            border-color: #898c95;
+        }
+    }
+}
+
+.wm-tabpage {
+    border: solid #898c95;
+    border-width: 0 1px 1px;
+    background: #fff;
+    box-shadow: 1px 1px 1px #fff;
+}
+
+@mixin progress() {
+    background: linear-gradient(#f2f2f2,#cdcdcd 35%,#b9b9b9 45%,#ccc);
+    border: 1px solid #a1a1a1;
+    border-radius: 3px;
+    box-shadow: 0 0 1px rgba(255,255,255,.8) inset;
+}
+
+@mixin progress-bar() {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    background: linear-gradient(#cdffcd,#9cedac 35%,#00d027 45%,#1ce133);
+    box-shadow: 1px -1px 4px rgba(255,255,255,.6) inset;
+}
+
+.wm-progress {
+    @include progress;
+    -webkit-appearance: none;
+}
+
+.wm-dlg {
+    ::-ms-fill {
+        @include progress-bar;
+    }
+    ::-moz-progress-bar {
+        @include progress-bar;
+    }
+    ::-webkit-progress-bar {
+        @include progress;
+    }
+    ::-webkit-progress-value {
+        @include progress-bar;
+    }
+}
+
+    // &:indeterminate {
+      // animation: wm-anim-determining-win7 .3s linear infinite;
+      // background: repeating-linear-gradient(135deg,#05c,#05c 12%,#0cf 25%,#0cf 38%,#05c 50%);
+      // background-size: 16px 16px;
+      // box-shadow: 0px 0px 1px #fff inset, 1px 2px 7px -1px #fff inset, -1px -2px 7px -1px #000 inset;
+      // width: 100%;
+    // }
+
+@keyframes wm-anim-determining-win7 {
+    from {
+        background-position: 0 0px;
+    }
+    to {
+        background-position: 0 16px;
+    }
+}
+
+}
