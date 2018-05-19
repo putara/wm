@@ -7,148 +7,148 @@ $colour-dialog: #f0f0f0;
 $colour-readonly: #f8f8f8;
 
 .wm-modal {
-	background-color: $colour-overlay;
+    background-color: $colour-overlay;
 }
 
 .wm-tm-win10 {
 
 .wm-dlg {
-	background-color: $colour-dialog;
-	border: 1px solid rgba(#000,.33);
-	box-shadow: 2px 2px 7px rgba(85,85,85,.6);
+    background-color: $colour-dialog;
+    border: 1px solid rgba(#000,.33);
+    box-shadow: 2px 2px 7px rgba(85,85,85,.6);
 
-	&.wm-active {
-		box-shadow: 2px 2px 10px #555;
-		border-color: #0078d7;
-	}
+    &.wm-active {
+        box-shadow: 2px 2px 10px #555;
+        border-color: #0078d7;
+    }
 
-	&.wm-active .wm-close::after,
-	.wm-close:hover::after {
-		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M1 2l5 5-5 5 1 1 5-5 5 5 1-1-5-5 5-5-1-1-5 5-5-5z' fill='%23fff'/%3E%3C/svg%3E");
-	}
+    &.wm-active .wm-close::after,
+    .wm-close:hover::after {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M1 2l5 5-5 5 1 1 5-5 5 5 1-1-5-5 5-5-1-1-5 5-5-5z' fill='%23fff'/%3E%3C/svg%3E");
+    }
 }
 
 .wm-title {
-	background-color: #fff;
-	color: #999;
-	line-height: 30px;
-	padding-right: 40px;
+    background-color: #fff;
+    color: #999;
+    line-height: 30px;
+    padding-right: 40px;
 }
 
 .wm-dlg.wm-active .wm-title {
-	background-color: #0078d7;
-	color: #fff;
+    background-color: #0078d7;
+    color: #fff;
 }
 
 .wm-close {
-	background: transparent none;
-	height: 29px;
-	right: 0;
-	top: 0;
-	width: 32px;
+    background: transparent none;
+    height: 29px;
+    right: 0;
+    top: 0;
+    width: 32px;
 
-	&::after {
-		background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M1 2l5 5-5 5 1 1 5-5 5 5 1-1-5-5 5-5-1-1-5 5-5-5z' fill='%23999'/%3E%3C/svg%3E") no-repeat center center;
-	}
+    &::after {
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M1 2l5 5-5 5 1 1 5-5 5 5 1-1-5-5 5-5-1-1-5 5-5-5z' fill='%23999'/%3E%3C/svg%3E") no-repeat center center;
+    }
 
-	&:hover,
-	&:active {
-		background-color: #e81123;
-	}
+    &:hover,
+    &:active {
+        background-color: #e81123;
+    }
 
-	&:hover:active {
-		background-color: #8b3a6a;
-	}
+    &:hover:active {
+        background-color: #8b3a6a;
+    }
 }
 
 .wm-body {
-	padding: 1px .5em;
+    padding: 1px .5em;
 }
 
 .wm-grp {
-	border: 1px solid #999;
+    border: 1px solid #999;
 
-	legend {
-		background-color: $colour-dialog;
-	}
+    legend {
+        background-color: $colour-dialog;
+    }
 }
 
 .wm-btn,
 .wm-cmb > select {
-	// HACK: use linear-gradient to work around a bug? in Firefox
+    // HACK: use linear-gradient to work around a bug? in Firefox
 
-	& {
-		border: 1px solid #adadad;
-		background: linear-gradient(#e1e1e1,#e1e1e1);
-	}
+    & {
+        border: 1px solid #adadad;
+        background: linear-gradient(#e1e1e1,#e1e1e1);
+    }
 
-	&:focus,
-	&:hover,
-	&:active {
-		border: 1px solid #0078d7;
-		background: linear-gradient(#e5f1fb,#e5f1fb);
-	}
+    &:focus,
+    &:hover,
+    &:active {
+        border: 1px solid #0078d7;
+        background: linear-gradient(#e5f1fb,#e5f1fb);
+    }
 
-	&:hover:active {
-		border: 1px solid #005499;
-		background: linear-gradient(#cce4f7,#cce4f7);
-	}
+    &:hover:active {
+        border: 1px solid #005499;
+        background: linear-gradient(#cce4f7,#cce4f7);
+    }
 }
 
 .wm-cmb {
-	&::after {
-		border-style: solid;
-		border-width: 0 1px 1px 0;
-		width: 5px;
-		height: 5px;
-		transform: rotate(45deg);
-		right: 8px;
-		top: 50%;
-		margin-top: -5px;
-	}
+    &::after {
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+        width: 5px;
+        height: 5px;
+        transform: rotate(45deg);
+        right: 8px;
+        top: 50%;
+        margin-top: -5px;
+    }
 }
 
 .wm-textbox {
-	border: 1px solid #6d6d6d;
+    border: 1px solid #6d6d6d;
 
-	&:hover,
-	&:focus {
-		border: 1px solid #0078d7;
-	}
+    &:hover,
+    &:focus {
+        border: 1px solid #0078d7;
+    }
 }
 
 .wm-tab {
-	border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
 
-	> li {
-		background: #f0f0f0;
-		border: solid #d9d9d9;
-		border-width: 1px 1px 0 1px;
+    > li {
+        background: #f0f0f0;
+        border: solid #d9d9d9;
+        border-width: 1px 1px 0 1px;
 
-		&:hover {
-			background: #d8eaf9;
-		}
+        &:hover {
+            background: #d8eaf9;
+        }
 
-		&.wm-active,
-		&.wm-active:hover {
-			background: #fff;
-		}
-	}
+        &.wm-active,
+        &.wm-active:hover {
+            background: #fff;
+        }
+    }
 }
 
 .wm-tabpage {
-	border: solid #d9d9d9;
-	border-width: 0 1px 1px;
-	background: #fff;
+    border: solid #d9d9d9;
+    border-width: 0 1px 1px;
+    background: #fff;
 }
 
 @include progress {
-	background: #e6e6e6;
-	border: 1px solid #bcbcbc;
+    background: #e6e6e6;
+    border: 1px solid #bcbcbc;
 }
 
 @include progress-bar {
-	background: #06b025;
+    background: #06b025;
 }
 
 }
