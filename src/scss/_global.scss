@@ -45,6 +45,12 @@ $size-75p: round($default-font-size * .75);
     user-select: none;
 }
 
+%appearance-none {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 %screen {
     @extend %user-select-none;
     position: fixed;

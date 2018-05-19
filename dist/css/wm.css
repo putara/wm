@@ -21,6 +21,11 @@
   -webkit-user-select: none;
   user-select: none; }
 
+.wm-cmb > select, .wm-chk, .wm-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
 .wm-desktop, .wm-modal {
   position: fixed;
   left: 0;
@@ -138,15 +143,22 @@
     border: 0;
     margin: 0;
     padding: 2px 20px 2px 2px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     display: block;
     width: 100%; }
   .wm-cmb::after {
     content: '';
     position: absolute;
     pointer-events: none; }
+
+.wm-chk, .wm-radio {
+  width: 1em;
+  height: 1em;
+  margin: .2em;
+  vertical-align: text-top;
+  display: inline-block; }
+
+.wm-radio {
+  border-radius: 100%; }
 
 .wm-textbox {
   width: 100%; }
@@ -282,7 +294,14 @@
 .wm-progress {
   -webkit-appearance: none; }
 
-.wm-dlg ::-ms-fill, .wm-dlg ::-moz-progress-bar, .wm-dlg ::-webkit-progress-bar, .wm-dlg ::-webkit-progress-value {
+.wm-dlg ::-ms-fill {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0; }
+
+.wm-dlg ::-moz-progress-bar {
   border: 0;
   box-sizing: border-box;
   margin: 0;
@@ -290,8 +309,22 @@
   outline: 0; }
 
 .wm-dlg ::-webkit-progress-bar {
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
   -webkit-appearance: none;
   background: transparent none; }
+
+.wm-dlg ::-webkit-progress-value {
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0; }
 
 /** Windows 10 Theme **/
 .wm-modal {
@@ -373,10 +406,45 @@
   top: 50%;
   margin-top: -5px; }
 
-.wm-tm-win10 .wm-textbox {
-  border: 1px solid #6d6d6d; }
-  .wm-tm-win10 .wm-textbox:hover, .wm-tm-win10 .wm-textbox:focus {
+.wm-tm-win10 .wm-chk, .wm-tm-win10 .wm-radio, .wm-tm-win10 .wm-textbox {
+  border: 1px solid #6d6d6d;
+  background: #fff; }
+  .wm-tm-win10 .wm-chk:hover, .wm-tm-win10 .wm-radio:hover, .wm-tm-win10 .wm-textbox:hover, .wm-tm-win10 .wm-chk:focus, .wm-tm-win10 .wm-radio:focus, .wm-tm-win10 .wm-textbox:focus {
     border: 1px solid #0078d7; }
+
+.wm-tm-win10 .wm-chk, .wm-tm-win10 .wm-radio {
+  position: relative; }
+  .wm-tm-win10 .wm-chk:checked::after, .wm-tm-win10 .wm-radio:checked::after {
+    content: '';
+    display: block;
+    position: absolute; }
+  .wm-tm-win10 .wm-chk:hover:active, .wm-tm-win10 .wm-radio:hover:active {
+    border: 1px solid #005499;
+    background: -webkit-gradient(linear, left top, left bottom, from(#cce4f7), to(#cce4f7));
+    background: linear-gradient(#cce4f7, #cce4f7); }
+
+.wm-tm-win10 .wm-chk:checked::after {
+  border-color: #000;
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  left: .2em;
+  top: 0;
+  width: .3em;
+  height: .6em;
+  -webkit-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg); }
+
+.wm-tm-win10 .wm-radio:checked::after {
+  border-radius: 100%;
+  background: #000;
+  left: 2px;
+  top: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px); }
+
+.wm-tm-win10 .wm-textbox {
+  color: #000; }
 
 .wm-tm-win10 .wm-tab {
   border-bottom: 1px solid #d9d9d9; }
@@ -544,6 +612,52 @@
   border-color: currentColor transparent transparent;
   border-style: solid;
   border-width: 4px 4px 0; }
+
+.wm-tm-win7 .wm-chk, .wm-tm-win7 .wm-radio {
+  position: relative;
+  background: #f4f4f4;
+  border: 1px solid #888; }
+  .wm-tm-win7 .wm-chk::before, .wm-tm-win7 .wm-radio::before, .wm-tm-win7 .wm-chk:checked::after, .wm-tm-win7 .wm-radio:checked::after {
+    content: '';
+    display: block;
+    position: absolute; }
+  .wm-tm-win7 .wm-chk::before, .wm-tm-win7 .wm-radio::before {
+    left: 1px;
+    top: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border: 1px solid;
+    border-color: #bbb #ddd #ddd #bbb;
+    background: linear-gradient(135deg, #cbcfd5, #f6f6f6);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .wm-tm-win7 .wm-chk:hover:active::before, .wm-tm-win7 .wm-radio:hover:active::before {
+    background: linear-gradient(135deg, #c8d5dd, #f0f3f5); }
+
+.wm-tm-win7 .wm-chk:checked::after {
+  border-color: #4c6198;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  left: calc(.2em + 1px);
+  top: 0;
+  width: .25em;
+  height: .55em;
+  -webkit-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg); }
+
+.wm-tm-win7 .wm-radio::before, .wm-tm-win7 .wm-radio:checked::after {
+  border-radius: 100%; }
+
+.wm-tm-win7 .wm-radio:checked::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #0d5480;
+  background: radial-gradient(at 25% 25%, #d4eefc, #5dcedd 33%, #1898d1 66%, #0e84c6);
+  left: 2px;
+  top: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px); }
 
 .wm-tm-win7 .wm-textbox, .wm-tm-win7 .wm-textbox:hover, .wm-tm-win7 .wm-textbox:focus {
   border-width: 1px;
@@ -720,6 +834,49 @@
   border-color: currentColor transparent transparent;
   border-style: solid;
   border-width: 4px 4px 0; }
+
+.wm-tm-win98 .wm-chk, .wm-tm-win98 .wm-radio {
+  position: relative;
+  background: #fff;
+  border: 1px solid;
+  border-color: #777 #fff #fff #777; }
+  .wm-tm-win98 .wm-chk::before, .wm-tm-win98 .wm-radio::before, .wm-tm-win98 .wm-chk:checked::after, .wm-tm-win98 .wm-radio:checked::after {
+    content: '';
+    display: block;
+    position: absolute; }
+  .wm-tm-win98 .wm-chk::before, .wm-tm-win98 .wm-radio::before {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+    border-color: #000 #ddd #ddd #000;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .wm-tm-win98 .wm-chk:hover:active, .wm-tm-win98 .wm-radio:hover:active {
+    background: #ccc; }
+
+.wm-tm-win98 .wm-chk:checked::after {
+  border-color: #000;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  left: calc(.2em + 1px);
+  top: 0;
+  width: .2em;
+  height: .5em;
+  -webkit-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg); }
+
+.wm-tm-win98 .wm-radio::before, .wm-tm-win98 .wm-radio:checked::after {
+  border-radius: 100%; }
+
+.wm-tm-win98 .wm-radio:checked::after {
+  background: #000;
+  left: 3px;
+  top: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px); }
 
 .wm-tm-win98 .wm-tab {
   border-bottom: 1px solid #fff; }

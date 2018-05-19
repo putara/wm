@@ -5,7 +5,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (function (window, document) {
-  var Button, Caption, Combo, Control, Desktop, Dialog, Edit, EventHandler, FakeMap, Footer, FormControl, Group, Label, MAX_DLGS, Memo, Progress, Tabs, TextBox, ZIND_FIRST, createElement, createEvent, createTextNode, ctlMap, isActive, setActive, setRole, setRoleAll;
+  var Button, Caption, Check, Combo, Control, Desktop, Dialog, Edit, EventHandler, FakeMap, Footer, FormControl, Group, Label, MAX_DLGS, Memo, Progress, Radio, Tabs, TextBox, ZIND_FIRST, createElement, createEvent, createTextNode, ctlMap, isActive, setActive, setRole, setRoleAll;
   ZIND_FIRST = 10000;
   MAX_DLGS = 100;
   createElement = function createElement(tag, parent, cls, html, attrs) {
@@ -456,30 +456,74 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return Button;
   }(FormControl);
-  Progress = function (_FormControl2) {
-    _inherits(Progress, _FormControl2);
+  Check = function (_FormControl2) {
+    _inherits(Check, _FormControl2);
 
-    function Progress(el) {
-      _classCallCheck(this, Progress);
+    function Check(el) {
+      _classCallCheck(this, Check);
 
-      var _this6 = _possibleConstructorReturn(this, _FormControl2.call(this, el, 'progressbar'));
+      var _this6 = _possibleConstructorReturn(this, _FormControl2.call(this, el, 'checkbox'));
 
-      el.classList.add('wm-progress');
-      Object.defineProperty(_this6, 'max', {
+      el.classList.add('wm-chk');
+      Object.defineProperty(_this6, 'checked', {
         get: function get() {
-          return _this6.el.max;
+          return _this6.el.checked;
         },
         set: function set(v) {
-          return _this6.el.max = v;
+          return _this6.el.checked = v;
         }
       });
       return _this6;
     }
 
+    return Check;
+  }(FormControl);
+  Radio = function (_FormControl3) {
+    _inherits(Radio, _FormControl3);
+
+    function Radio(el) {
+      _classCallCheck(this, Radio);
+
+      var _this7 = _possibleConstructorReturn(this, _FormControl3.call(this, el, 'radio'));
+
+      el.classList.add('wm-radio');
+      Object.defineProperty(_this7, 'checked', {
+        get: function get() {
+          return _this7.el.checked;
+        },
+        set: function set(v) {
+          return _this7.el.checked = v;
+        }
+      });
+      return _this7;
+    }
+
+    return Radio;
+  }(FormControl);
+  Progress = function (_FormControl4) {
+    _inherits(Progress, _FormControl4);
+
+    function Progress(el) {
+      _classCallCheck(this, Progress);
+
+      var _this8 = _possibleConstructorReturn(this, _FormControl4.call(this, el, 'progressbar'));
+
+      el.classList.add('wm-progress');
+      Object.defineProperty(_this8, 'max', {
+        get: function get() {
+          return _this8.el.max;
+        },
+        set: function set(v) {
+          return _this8.el.max = v;
+        }
+      });
+      return _this8;
+    }
+
     return Progress;
   }(FormControl);
-  Combo = function (_FormControl3) {
-    _inherits(Combo, _FormControl3);
+  Combo = function (_FormControl5) {
+    _inherits(Combo, _FormControl5);
 
     function Combo(el) {
       _classCallCheck(this, Combo);
@@ -492,24 +536,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       parent.removeChild(old);
       el = outer.querySelector('select');
 
-      var _this7 = _possibleConstructorReturn(this, _FormControl3.call(this, el, null, outer));
+      var _this9 = _possibleConstructorReturn(this, _FormControl5.call(this, el, null, outer));
 
-      _this7.outer = outer;
-      return _this7;
+      _this9.outer = outer;
+      return _this9;
     }
 
     return Combo;
   }(FormControl);
-  TextBox = function (_FormControl4) {
-    _inherits(TextBox, _FormControl4);
+  TextBox = function (_FormControl6) {
+    _inherits(TextBox, _FormControl6);
 
     function TextBox(el) {
       _classCallCheck(this, TextBox);
 
-      var _this8 = _possibleConstructorReturn(this, _FormControl4.call(this, el));
+      var _this10 = _possibleConstructorReturn(this, _FormControl6.call(this, el));
 
       el.classList.add('wm-textbox');
-      return _this8;
+      return _this10;
     }
 
     return TextBox;
@@ -520,10 +564,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function Edit(el) {
       _classCallCheck(this, Edit);
 
-      var _this9 = _possibleConstructorReturn(this, _TextBox.call(this, el));
+      var _this11 = _possibleConstructorReturn(this, _TextBox.call(this, el));
 
       el.classList.add('wm-edit');
-      return _this9;
+      return _this11;
     }
 
     return Edit;
@@ -534,10 +578,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function Memo(el) {
       _classCallCheck(this, Memo);
 
-      var _this10 = _possibleConstructorReturn(this, _TextBox2.call(this, el));
+      var _this12 = _possibleConstructorReturn(this, _TextBox2.call(this, el));
 
       el.classList.add('wm-memo');
-      return _this10;
+      return _this12;
     }
 
     return Memo;
@@ -548,10 +592,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function Group(el) {
       _classCallCheck(this, Group);
 
-      var _this11 = _possibleConstructorReturn(this, _Control3.call(this, el));
+      var _this13 = _possibleConstructorReturn(this, _Control3.call(this, el));
 
       el.classList.add('wm-grp');
-      return _this11;
+      return _this13;
     }
 
     return Group;
@@ -564,12 +608,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       var i, l, len, pages, t, tabs;
 
-      var _this12 = _possibleConstructorReturn(this, _Control4.call(this, el));
+      var _this14 = _possibleConstructorReturn(this, _Control4.call(this, el));
 
       tabs = el.querySelectorAll('.wm-tab>li');
       pages = el.querySelectorAll('.wm-tabpage>li');
       if (!tabs.length) {
-        return _possibleConstructorReturn(_this12);
+        return _possibleConstructorReturn(_this14);
       }
       setRole(el.querySelector('.wm-tab'), 'tablist');
       setRoleAll(tabs, 'tab');
@@ -594,7 +638,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (pages[0]) {
         setActive(pages[0], true);
       }
-      return _this12;
+      return _this14;
     }
 
     return Tabs;
@@ -613,6 +657,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   ctlMap = {
     '.wm-lbl': Label,
     '.wm-btn,button': Button,
+    'input[type=checkbox]': Check,
+    'input[type=radio]': Radio,
     'select': Combo,
     'input:not([type]),input[type=text],input[type=password],input[type=email]': Edit,
     'textarea': Memo,
@@ -650,7 +696,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   }();
   Dialog = function () {
     function Dialog(owner, el) {
-      var _this14 = this;
+      var _this16 = this;
 
       _classCallCheck(this, Dialog);
 
@@ -661,14 +707,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.centre = true;
       this.map = new FakeMap();
       this.onResize = function () {
-        _this14._autoMove();
+        _this16._autoMove();
       };
       setRole(el, owner.modal ? 'alertdialog' : 'dialog');
       el.addEventListener('mousedown', function (e) {
-        _this14._activate(e);
+        _this16._activate(e);
       }, false);
       new Caption(owner, el).on('wm.close', function () {
-        _this14.close();
+        _this16.close();
       });
       body = el.querySelector('.wm-body');
       for (selector in ctlMap) {

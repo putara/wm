@@ -108,13 +108,63 @@ $colour-readonly: #f8f8f8;
     }
 }
 
-.wm-textbox {
+%common-appearance {
     border: 1px solid #6d6d6d;
+    background: #fff;
 
     &:hover,
     &:focus {
         border: 1px solid #0078d7;
     }
+}
+
+%common-checkbox {
+    @extend %common-appearance;
+    position: relative;
+
+    &:checked::after {
+        content: '';
+        display: block;
+        position: absolute;
+    }
+
+    &:hover:active {
+        border: 1px solid #005499;
+        background: linear-gradient(#cce4f7,#cce4f7);
+    }
+}
+
+.wm-chk {
+    @extend %common-checkbox;
+
+    &:checked::after {
+        border-color: #000;
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+        left: .2em;
+        top: 0;
+        width: .3em;
+        height: .6em;
+        transform: rotate(45deg);
+    }
+}
+
+.wm-radio {
+    @extend %common-checkbox;
+
+    &:checked::after {
+        border-radius: 100%;
+        background: #000;
+        left: 2px;
+        top: 2px;
+        width: #{"calc(100% - 4px)"};
+        height: #{"calc(100% - 4px)"};
+    }
+}
+
+.wm-textbox {
+    @extend %common-appearance;
+    color: #000;
 }
 
 .wm-tab {

@@ -296,6 +296,22 @@ do (window, document) ->
                     type = 'button'
                 el.type = type
 
+    class Check extends FormControl
+        constructor: (el) ->
+            super(el, 'checkbox')
+            el.classList.add 'wm-chk'
+            Object.defineProperty this, 'checked',
+                get: => @el.checked,
+                set: (v) => @el.checked = v
+
+    class Radio extends FormControl
+        constructor: (el) ->
+            super(el, 'radio')
+            el.classList.add 'wm-radio'
+            Object.defineProperty this, 'checked',
+                get: => @el.checked,
+                set: (v) => @el.checked = v
+
     class Progress extends FormControl
         constructor: (el) ->
             super(el, 'progressbar')
@@ -367,6 +383,8 @@ do (window, document) ->
     ctlMap = {
         '.wm-lbl': Label
         '.wm-btn,button': Button
+        'input[type=checkbox]': Check
+        'input[type=radio]': Radio
         'select': Combo
         'input:not([type]),input[type=text],input[type=password],input[type=email]': Edit
         'textarea': Memo

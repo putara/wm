@@ -145,12 +145,10 @@
     }
     & > select {
         @extend %reset-outline;
+        @extend %appearance-none;
         border: 0;
         margin: 0;
         padding: 2px 20px 2px 2px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
         display: block;
         width: 100%;
     }
@@ -160,6 +158,20 @@
         position: absolute;
         pointer-events: none;
     }
+}
+
+.wm-chk, .wm-radio {
+    @extend %appearance-none;
+    width: 1em;
+    height: 1em;
+    margin: .2em;
+    vertical-align: text-top;
+    // override
+    display: inline-block;
+}
+
+.wm-radio {
+    border-radius: 100%;
 }
 
 .wm-textbox {
@@ -326,7 +338,9 @@
     -webkit-appearance: none;
 }
 
-%progress-bar-base {
+// must use mixin here!
+// MSIE doesn't like ::-ms-fill combined with ::-moz- or ::-webkit-
+@mixin progress-bar-base {
     border: 0;
     box-sizing: border-box;
     margin: 0;
@@ -336,17 +350,17 @@
 
 .wm-dlg {
     ::-ms-fill {
-        @extend %progress-bar-base;
+        @include progress-bar-base;
     }
     ::-moz-progress-bar {
-        @extend %progress-bar-base;
+        @include progress-bar-base;
     }
     ::-webkit-progress-bar {
-        @extend %progress-bar-base;
+        @include progress-bar-base;
         -webkit-appearance: none;
         background: transparent none;
     }
     ::-webkit-progress-value {
-        @extend %progress-bar-base;
+        @include progress-bar-base;
     }
 }
