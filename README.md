@@ -7,14 +7,20 @@ A window manager written in CSS3 & JavaScript.
 
 ## Tested Web Browsers
 - Internet Explorer 11
-- Microsoft Edge on Windows 10 Fall Creators Update
+- Microsoft Edge on Windows 10 Fall Creators Update :collision:
 - Mozilla Firefox 61
-- Opera 12.17 (with some minor UI glitches)
+- SRWare Iron 66 (Webkit)
+- Opera 12.17 :collision:
+
+:collision: : some minor visual glitches
 
 ## Todos
 - [X] Support old web browsers (IE & Opera)
 - [ ] Support mobile web browsers
-- [ ] Test on Google Chrome & Apple Safari
+- [X] Test on Webkit-baed web browsers
+- [ ] Test on MacOS and Linux
+- [ ] Better keyboard navigation
+- [ ] More UI elements (slider, calendar, colour picker, ...)
 - [ ] More themes
 
 ## License
