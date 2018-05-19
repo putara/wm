@@ -321,3 +321,32 @@
     width: 100%;
     overflow: hidden;
 }
+
+.wm-progress {
+    -webkit-appearance: none;
+}
+
+%progress-bar-base {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.wm-dlg {
+    ::-ms-fill {
+        @extend %progress-bar-base;
+    }
+    ::-moz-progress-bar {
+        @extend %progress-bar-base;
+    }
+    ::-webkit-progress-bar {
+        @extend %progress-bar-base;
+        -webkit-appearance: none;
+        background: transparent none;
+    }
+    ::-webkit-progress-value {
+        @extend %progress-bar-base;
+    }
+}

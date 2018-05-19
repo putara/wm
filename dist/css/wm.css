@@ -279,6 +279,20 @@
   width: 100%;
   overflow: hidden; }
 
+.wm-progress {
+  -webkit-appearance: none; }
+
+.wm-dlg ::-ms-fill, .wm-dlg ::-moz-progress-bar, .wm-dlg ::-webkit-progress-bar, .wm-dlg ::-webkit-progress-value {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0; }
+
+.wm-dlg ::-webkit-progress-bar {
+  -webkit-appearance: none;
+  background: transparent none; }
+
 /** Windows 10 Theme **/
 .wm-modal {
   background-color: rgba(0, 0, 0, 0.4); }
@@ -382,36 +396,15 @@
 
 .wm-tm-win10 .wm-progress {
   background: #e6e6e6;
-  border: 1px solid #bcbcbc;
-  -webkit-appearance: none; }
+  border: 1px solid #bcbcbc; }
 
 .wm-tm-win10 .wm-dlg ::-ms-fill {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: #06b025; }
 
 .wm-tm-win10 .wm-dlg ::-moz-progress-bar {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: #06b025; }
 
-.wm-tm-win10 .wm-dlg ::-webkit-progress-bar {
-  background: #e6e6e6;
-  border: 1px solid #bcbcbc; }
-
 .wm-tm-win10 .wm-dlg ::-webkit-progress-value {
-  border: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: #06b025; }
 
 /** Windows 7 Theme **/
@@ -594,58 +587,21 @@
   border: 1px solid #a1a1a1;
   border-radius: 3px;
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.8) inset;
-          box-shadow: 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -webkit-appearance: none; }
+          box-shadow: 0 0 1px rgba(255, 255, 255, 0.8) inset; }
 
 .wm-tm-win7 .wm-dlg ::-ms-fill {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: linear-gradient(#cdffcd, #9cedac 35%, #00d027 45%, #1ce133);
   box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset; }
 
 .wm-tm-win7 .wm-dlg ::-moz-progress-bar {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: linear-gradient(#cdffcd, #9cedac 35%, #00d027 45%, #1ce133);
   box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset; }
 
-.wm-tm-win7 .wm-dlg ::-webkit-progress-bar {
-  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), color-stop(35%, #cdcdcd), color-stop(45%, #b9b9b9), to(#ccc));
-  background: linear-gradient(#f2f2f2, #cdcdcd 35%, #b9b9b9 45%, #ccc);
-  border: 1px solid #a1a1a1;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.8) inset;
-          box-shadow: 0 0 1px rgba(255, 255, 255, 0.8) inset; }
-
 .wm-tm-win7 .wm-dlg ::-webkit-progress-value {
-  border: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: -webkit-gradient(linear, left top, left bottom, from(#cdffcd), color-stop(35%, #9cedac), color-stop(45%, #00d027), to(#1ce133));
   background: linear-gradient(#cdffcd, #9cedac 35%, #00d027 45%, #1ce133);
   -webkit-box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset;
           box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset; }
-
-@-webkit-keyframes wm-anim-determining-win7 {
-  from {
-    background-position: 0 0px; }
-  to {
-    background-position: 0 16px; } }
-
-@keyframes wm-anim-determining-win7 {
-  from {
-    background-position: 0 0px; }
-  to {
-    background-position: 0 16px; } }
 
 /** Windows 98 Theme **/
 .wm-modal {
@@ -793,37 +749,13 @@
   border-width: 1px;
   border-style: solid;
   border-color: #777 #fff #fff #777;
-  padding: 1px;
-  -webkit-appearance: none; }
+  padding: 1px; }
 
 .wm-tm-win98 .wm-dlg ::-ms-fill {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: #008; }
 
 .wm-tm-win98 .wm-dlg ::-moz-progress-bar {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: #008; }
 
-.wm-tm-win98 .wm-dlg ::-webkit-progress-bar {
-  background-color: #ccc;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #777 #fff #fff #777;
-  padding: 1px; }
-
 .wm-tm-win98 .wm-dlg ::-webkit-progress-value {
-  border: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: 0;
   background: #008; }
