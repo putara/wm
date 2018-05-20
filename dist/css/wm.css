@@ -15,7 +15,7 @@
   vertical-align: baseline;
   text-decoration: none; }
 
-.wm-desktop, .wm-modal, .wm-title, .wm-tab > li {
+.wm-desktop, .wm-modal, .wm-title, .wm-nosel, .wm-tab > li {
   -ms-user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -99,10 +99,12 @@
 
 .wm-body {
   margin: 8px; }
-  .wm-body .wm-ml > .wm-ctl {
-    margin-left: .5em; }
-  .wm-body .wm-mr > .wm-ctl {
-    margin-right: .5em; }
+
+.wm-ml > .wm-ctl {
+  margin-left: .5em; }
+
+.wm-mr > .wm-ctl {
+  margin-right: .5em; }
 
 .wm-ok, .wm-cancel {
   width: 7em; }
@@ -268,6 +270,8 @@
       padding-right: 10px; }
 
 .wm-tabpage {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   list-style: none;
   background: none;
   clear: both;
@@ -407,12 +411,12 @@
   margin-top: -5px; }
 
 .wm-tm-win10 .wm-chk, .wm-tm-win10 .wm-radio, .wm-tm-win10 .wm-textbox {
-  border: 1px solid #6d6d6d;
-  background: #fff; }
+  border: 1px solid #6d6d6d; }
   .wm-tm-win10 .wm-chk:hover, .wm-tm-win10 .wm-radio:hover, .wm-tm-win10 .wm-textbox:hover, .wm-tm-win10 .wm-chk:focus, .wm-tm-win10 .wm-radio:focus, .wm-tm-win10 .wm-textbox:focus {
     border: 1px solid #0078d7; }
 
 .wm-tm-win10 .wm-chk, .wm-tm-win10 .wm-radio {
+  background: #fff;
   position: relative; }
   .wm-tm-win10 .wm-chk:checked::after, .wm-tm-win10 .wm-radio:checked::after {
     content: '';
@@ -544,11 +548,10 @@
   -webkit-box-shadow: 0 0 1px #fff inset,0 0 15px #fc8063;
           box-shadow: 0 0 1px #fff inset,0 0 15px #fc8063; }
 
-.wm-tm-win7 .wm-btn, .wm-tm-win7 .wm-btn:focus, .wm-tm-win7 .wm-btn:hover, .wm-tm-win7 .wm-btn:active, .wm-tm-win7 .wm-btn:active,
+.wm-tm-win7 .wm-btn, .wm-tm-win7 .wm-btn:focus, .wm-tm-win7 .wm-btn:hover, .wm-tm-win7 .wm-btn:active,
 .wm-tm-win7 .wm-cmb > select,
 .wm-tm-win7 .wm-cmb > select:focus,
 .wm-tm-win7 .wm-cmb > select:hover,
-.wm-tm-win7 .wm-cmb > select:active,
 .wm-tm-win7 .wm-cmb > select:active {
   border-width: 1px;
   border-style: solid;
@@ -616,7 +619,7 @@
 .wm-tm-win7 .wm-chk, .wm-tm-win7 .wm-radio {
   position: relative;
   background: #f4f4f4;
-  border: 1px solid #888; }
+  border: 1px solid #8e8f8f; }
   .wm-tm-win7 .wm-chk::before, .wm-tm-win7 .wm-radio::before, .wm-tm-win7 .wm-chk:checked::after, .wm-tm-win7 .wm-radio:checked::after {
     content: '';
     display: block;
@@ -631,8 +634,18 @@
     background: linear-gradient(135deg, #cbcfd5, #f6f6f6);
     -webkit-box-sizing: border-box;
             box-sizing: border-box; }
-  .wm-tm-win7 .wm-chk:hover:active::before, .wm-tm-win7 .wm-radio:hover:active::before {
-    background: linear-gradient(135deg, #c8d5dd, #f0f3f5); }
+  .wm-tm-win7 .wm-chk:hover, .wm-tm-win7 .wm-radio:hover, .wm-tm-win7 .wm-chk:active, .wm-tm-win7 .wm-radio:active {
+    background: #def9fa;
+    border-color: #5586a3; }
+    .wm-tm-win7 .wm-chk:hover::before, .wm-tm-win7 .wm-radio:hover::before, .wm-tm-win7 .wm-chk:active::before, .wm-tm-win7 .wm-radio:active::before {
+      background: linear-gradient(135deg, #b1dffd, #e9f7fe);
+      border-color: #79c6f9 #9ad8fa #9ad8fa #79c6f9; }
+  .wm-tm-win7 .wm-chk:hover:active, .wm-tm-win7 .wm-radio:hover:active {
+    background: #c2e4f6;
+    border-color: #2c628b; }
+    .wm-tm-win7 .wm-chk:hover:active::before, .wm-tm-win7 .wm-radio:hover:active::before {
+      background: linear-gradient(135deg, #71b1dc, #b3ddf3);
+      border-color: #65afda #7dbbe0 #7dbbe0 #65afda; }
 
 .wm-tm-win7 .wm-chk:checked::after {
   border-color: #4c6198;
@@ -652,8 +665,8 @@
 .wm-tm-win7 .wm-radio:checked::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border: 1px solid #0d5480;
-  background: radial-gradient(at 25% 25%, #d4eefc, #5dcedd 33%, #1898d1 66%, #0e84c6);
+  border: 1px solid #0e2234;
+  background: radial-gradient(at 25% 25%, #dbffff, #53cfe0 33%, #1295d1);
   left: 2px;
   top: 2px;
   width: calc(100% - 4px);
@@ -696,24 +709,24 @@
           box-shadow: 1px 1px 1px #fff; }
 
 .wm-tm-win7 .wm-progress {
-  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), color-stop(35%, #cdcdcd), color-stop(45%, #b9b9b9), to(#ccc));
-  background: linear-gradient(#f2f2f2, #cdcdcd 35%, #b9b9b9 45%, #ccc);
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), color-stop(45%, #cdcdcd), color-stop(50%, #b9b9b9), to(#ccc));
+  background: linear-gradient(#f2f2f2, #cdcdcd 45%, #b9b9b9 50%, #ccc);
   border: 1px solid #a1a1a1;
   border-radius: 3px;
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.8) inset;
-          box-shadow: 0 0 1px rgba(255, 255, 255, 0.8) inset; }
+  -webkit-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.1) inset;
+          box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.1) inset; }
 
 .wm-tm-win7 .wm-dlg ::-ms-fill {
-  background: linear-gradient(#cdffcd, #9cedac 35%, #00d027 45%, #1ce133);
+  background: linear-gradient(#cdffcd, #9cedac 45%, #00d027 50%, #1ce133);
   box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset; }
 
 .wm-tm-win7 .wm-dlg ::-moz-progress-bar {
-  background: linear-gradient(#cdffcd, #9cedac 35%, #00d027 45%, #1ce133);
+  background: linear-gradient(#cdffcd, #9cedac 45%, #00d027 50%, #1ce133);
   box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset; }
 
 .wm-tm-win7 .wm-dlg ::-webkit-progress-value {
-  background: -webkit-gradient(linear, left top, left bottom, from(#cdffcd), color-stop(35%, #9cedac), color-stop(45%, #00d027), to(#1ce133));
-  background: linear-gradient(#cdffcd, #9cedac 35%, #00d027 45%, #1ce133);
+  background: -webkit-gradient(linear, left top, left bottom, from(#cdffcd), color-stop(45%, #9cedac), color-stop(50%, #00d027), to(#1ce133));
+  background: linear-gradient(#cdffcd, #9cedac 45%, #00d027 50%, #1ce133);
   -webkit-box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset;
           box-shadow: 1px -1px 4px rgba(255, 255, 255, 0.6) inset; }
 
@@ -877,6 +890,12 @@
   top: 3px;
   width: calc(100% - 6px);
   height: calc(100% - 6px); }
+
+.wm-tm-win98 .wm-textbox:-moz-read-only {
+  background: #ccc; }
+
+.wm-tm-win98 .wm-textbox:read-only {
+  background: #ccc; }
 
 .wm-tm-win98 .wm-tab {
   border-bottom: 1px solid #fff; }

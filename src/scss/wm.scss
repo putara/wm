@@ -72,13 +72,17 @@
 
 .wm-body {
     margin: $size-60p;
+}
 
-    .wm-ml > .wm-ctl {
-        margin-left: .5em;
-    }
-    .wm-mr > .wm-ctl {
-        margin-right: .5em;
-    }
+.wm-ml > .wm-ctl {
+    margin-left: .5em;
+}
+.wm-mr > .wm-ctl {
+    margin-right: .5em;
+}
+
+.wm-nosel {
+    @extend %user-select-none;
 }
 
 .wm-ok, .wm-cancel {
@@ -306,6 +310,7 @@
 }
 
 .wm-tabpage {
+    box-sizing: border-box;
     list-style: none;
     background: none;
     clear: both;

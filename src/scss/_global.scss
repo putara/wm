@@ -60,6 +60,10 @@ $size-75p: round($default-font-size * .75);
     height: 100%;
 }
 
+@mixin border-color-3d($topleft, $rightbottom) {
+    border-color: $topleft $rightbottom $rightbottom $topleft;
+}
+
 @mixin progress {
     .wm-progress {
         @content;

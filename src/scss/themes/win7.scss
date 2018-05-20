@@ -107,7 +107,6 @@ $colour-readonly: #f8f8f8;
     &,
     &:focus,
     &:hover,
-    &:active,
     &:active {
         border-width: 1px;
         border-style: solid;
@@ -185,7 +184,7 @@ $colour-readonly: #f8f8f8;
 %common-checkbox {
     position: relative;
     background: #f4f4f4;
-    border: 1px solid #888;
+    border: 1px solid #8e8f8f;
 
     &::before,
     &:checked::after {
@@ -200,14 +199,27 @@ $colour-readonly: #f8f8f8;
         width: #{"calc(100% - 2px)"};
         height: #{"calc(100% - 2px)"};
         border: 1px solid;
-        border-color: #bbb #ddd #ddd #bbb;
-        background: linear-gradient(135deg, #cbcfd5, #f6f6f6);
+        @include border-color-3d(#bbb, #ddd);
+        background: linear-gradient(135deg,#cbcfd5,#f6f6f6);
         box-sizing: border-box;
     }
 
-    &:hover:active {
+    &:hover,
+    &:active {
+        background: #def9fa;
+        border-color: #5586a3;
         &::before {
-            background: linear-gradient(135deg, #c8d5dd, #f0f3f5);
+            background: linear-gradient(135deg,#b1dffd,#e9f7fe);
+            @include border-color-3d(#79c6f9, #9ad8fa);
+        }
+    }
+
+    &:hover:active {
+        background: #c2e4f6;
+        border-color: #2c628b;
+        &::before {
+            background: linear-gradient(135deg,#71b1dc,#b3ddf3);
+            @include border-color-3d(#65afda, #7dbbe0);
         }
     }
 }
@@ -237,8 +249,8 @@ $colour-readonly: #f8f8f8;
 
     &:checked::after {
         box-sizing: border-box;
-        border: 1px solid #0d5480;
-        background: radial-gradient(at 25% 25%,#d4eefc,#5dcedd 33%,#1898d1 66%,#0e84c6);
+        border: 1px solid #0e2234;
+        background: radial-gradient(at 25% 25%,#dbffff,#53cfe0 33%,#1295d1);
         left: 2px;
         top: 2px;
         width: #{"calc(100% - 4px)"};
@@ -298,15 +310,15 @@ $colour-readonly: #f8f8f8;
 }
 
 @include progress {
-    background: linear-gradient(#f2f2f2,#cdcdcd 35%,#b9b9b9 45%,#ccc);
+    background: linear-gradient(#f2f2f2,#cdcdcd 45%,#b9b9b9 50%,#ccc);
     border: 1px solid #a1a1a1;
     border-radius: 3px;
-    box-shadow: 0 0 1px rgba(255,255,255,.8) inset;
+    box-shadow: 0 0 1px 1px rgba(#fff,.1) inset;
 }
 
 @include progress-bar {
-    background: linear-gradient(#cdffcd,#9cedac 35%,#00d027 45%,#1ce133);
-    box-shadow: 1px -1px 4px rgba(255,255,255,.6) inset;
+    background: linear-gradient(#cdffcd,#9cedac 45%,#00d027 50%,#1ce133);
+    box-shadow: 1px -1px 4px rgba(#fff,.6) inset;
 }
 
 // &:indeterminate {

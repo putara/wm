@@ -110,7 +110,6 @@ $colour-readonly: #f8f8f8;
 
 %common-appearance {
     border: 1px solid #6d6d6d;
-    background: #fff;
 
     &:hover,
     &:focus {
@@ -120,6 +119,7 @@ $colour-readonly: #f8f8f8;
 
 %common-checkbox {
     @extend %common-appearance;
+    background: #fff;
     position: relative;
 
     &:checked::after {
