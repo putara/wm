@@ -1,5 +1,5 @@
 # Introduction
-A window manager written in CSS3 & JavaScript.
+A window manager powered by CSS3 & JavaScript.
 \>\>[Demo](https://putara.github.io/wm/)<<
 
 ## Dependencies
@@ -17,7 +17,7 @@ A window manager written in CSS3 & JavaScript.
 ## Todos
 - [X] Support old web browsers (IE & Opera)
 - [ ] Support mobile web browsers
-- [X] Test on Webkit-baed web browsers
+- [X] Test on Webkit-based web browsers
 - [ ] Test on MacOS and Linux
 - [ ] Better keyboard navigation
 - [ ] More UI elements (slider, calendar, colour picker, ...)
