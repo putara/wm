@@ -74,21 +74,6 @@
     margin: $size-60p;
 }
 
-.wm-ml > .wm-ctl {
-    margin-left: .5em;
-}
-.wm-mr > .wm-ctl {
-    margin-right: .5em;
-}
-
-.wm-nosel {
-    @extend %user-select-none;
-}
-
-.wm-ok, .wm-cancel {
-    width: 7em;
-}
-
 .wm-ctl {
     @extend %reset;
     display: block;
@@ -232,8 +217,8 @@
     @extend %wm-flexbox;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: .7em 0 1em;
-    padding: .5em 1em .4em;
+    margin: .7em 0 .7em;
+    padding: 1em 1em .5em;
     position: relative;
 
     legend {
@@ -246,6 +231,10 @@
         & ~ * {
             width: 100%;
         }
+    }
+
+    & + .wm-grp {
+        margin-top: 1em;
     }
 }
 
@@ -368,4 +357,23 @@
     ::-webkit-progress-value {
         @include progress-bar-base;
     }
+}
+
+.wm-blk {
+    display: block;
+}
+
+.wm-ml > .wm-ctl {
+    margin-left: .5em;
+}
+.wm-mr > .wm-ctl {
+    margin-right: .5em;
+}
+
+.wm-nosel {
+    @extend %user-select-none;
+}
+
+.wm-ok, .wm-cancel {
+    width: 7em;
 }

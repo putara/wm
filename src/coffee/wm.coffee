@@ -113,10 +113,9 @@ do (window, document) ->
         _resizeElement: (el, cx, cy) ->
             style = el.style
             cx += 'px' if typeof cx == 'number'
-            style.width = cx
-            if cy?
-                cy += 'px' if typeof cy == 'number'
-                style.height = cy
+            cy += 'px' if typeof cy == 'number'
+            style.width = cx or ''
+            style.height = cy or ''
             @_adjustLocation el
             return
 
@@ -231,7 +230,8 @@ do (window, document) ->
             title = el.querySelector '.wm-title'
 
             @close = createElement 'button', title, 'wm-close', title: 'Close'
-            @close.addEventListener 'click', =>
+            @close.addEventListener 'click', (e) =>
+                e.preventDefault()
                 @trigger 'wm.close'
                 return
             , false
@@ -271,6 +271,9 @@ do (window, document) ->
             super(el)
             (outer or el).classList.add 'wm-ctl'
             setRole el, role if role?
+            Object.defineProperty this, 'visible',
+                get: => window.getComputedStyle(@el).visibility != 'hidden',
+                set: (v) => @el.style.visibility = if v then 'visible' else 'hidden'
 
     class Label extends Control
         constructor: (el) ->
@@ -283,6 +286,9 @@ do (window, document) ->
             Object.defineProperty this, 'value',
                 get: => @el.value,
                 set: (v) => @el.value = v
+            Object.defineProperty this, 'disabled',
+                get: => @el.disabled,
+                set: (v) => @el.disabled = v
 
     class Button extends FormControl
         constructor: (el) ->
@@ -412,12 +418,12 @@ do (window, document) ->
             @map[val] = value
             return
 
-    class Dialog
+    class Dialog extends EventHandler
         constructor: (owner, el) ->
+            super(el)
             @owner = owner
-            @el = el
             @active = false
-            @centre = true
+            @centre = false
             @map = new FakeMap()
             @onResize = =>
                 @_autoMove()
@@ -441,23 +447,31 @@ do (window, document) ->
                     cls = new T(e)
                     @_accessData cls.el, cls
 
-            @_setResizeListener()
-            @_autoMove()
+            @bind '.wm-ok,.wm-cancel', (e) =>
+                @close(e.target.classList.contains('wm-ok'))
+                return
+
+            @_setCentre(true)
             el.classList.add 'wm-shown'
 
         equals: (src) ->
             @el.isSameNode src.el
 
-        close: ->
-#           if @trigger 'wm.closing'
-            @owner._deleteDialog this
-            window.removeEventListener 'resize', @onResize, false
+        close: (reason) ->
+            evt = createEvent 'wm.closing'
+            evt.reason = if reason then 'ok' else 'cancel'
+            @trigger evt
+            if evt.defaultPrevented is false
+                @owner._deleteDialog this
+                window.removeEventListener 'resize', @onResize, false
+                @trigger 'wm.closed'
             this
 
         move: (x, y) ->
-            @centre = false
-            @_setResizeListener()
-            @owner._moveElement @el, x, y
+            centre = !((typeof x == 'number' or x) and (typeof y == 'number' or y))
+            @_setCentre(centre)
+            unless centre
+                @owner._moveElement @el, x, y
             this
 
         resize: (cx, cy) ->
@@ -481,19 +495,25 @@ do (window, document) ->
             result
 
         bind: (selector, type, listener) ->
+            if typeof type != 'string'
+                listener = type
+                type = 'click'
             @findAll(selector).forEach (c) =>
                 c.on type, listener
                 return
             this
 
         unbind: (selector, type, listener) ->
+            if typeof type != 'string'
+                listener = type
+                type = 'click'
             @findAll(selector).forEach (c) =>
                 c.off type, listener
                 return
             this
 
         _accessData: (el, val) ->
-            if val == undefined
+            if typeof val == 'undefined'
                 return @map.get el
             @map.set el, val
             return
@@ -523,11 +543,14 @@ do (window, document) ->
             @owner._moveToCentre @el if @centre
             return
 
-        _setResizeListener: () ->
-            if @centre
+        _setCentre: (centre) ->
+            return if @center is centre
+            @centre = centre
+            if centre
                 window.addEventListener 'resize', @onResize, false
             else
                 window.removeEventListener 'resize', @onResize, false
+            @_autoMove()
             return
 
     window.Desktop = Desktop

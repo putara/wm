@@ -51,13 +51,23 @@ $size-75p: round($default-font-size * .75);
     appearance: none;
 }
 
+@mixin covered-box($left: 0, $top: 0, $width: 100%, $height: 100%) {
+    left: $left;
+    top: $top;
+    width: $width;
+    height: $height;
+}
+
 %screen {
     @extend %user-select-none;
     position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    @include covered-box;
+}
+
+%pseudo-box {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
 }
 
 @mixin border-color-3d($topleft, $rightbottom) {

@@ -1,0 +1,313 @@
+/** Windows XP Theme **/
+
+@import '../_global';
+
+$colour-text: #000;
+$colour-dialog: #ece9d8;
+$colour-readonly: $colour-dialog;
+
+.wm-modal {
+    background-color: $colour-overlay;
+}
+
+.wm-tm-winxp {
+
+.wm-dlg {
+    background-color: $colour-dialog;
+    box-shadow: 2px 2px 7px rgba(85,85,85,.6);
+    border-radius: 5px 5px 0 0;
+
+    &.wm-active {
+        box-shadow: 2px 2px 10px #555;
+    }
+}
+
+.wm-title {
+    color: #fff;
+    background: linear-gradient(#87a6e5,#7999de 15%,#80a7e8 55%,#83abe9);
+    box-shadow: 0 -1px 5px 0 #3260cf inset,0 1px 3px #c3d6f8 inset;
+    border-color: #688de0 #6279dd transparent #5e8ad7;
+    text-shadow: 1px 1px 0 #0a1883;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 1px 1px 0;
+    line-height: 30px;
+    padding-right: 40px;
+}
+
+.wm-body {
+    padding: .5em 1em;
+    border-style: solid;
+    border-width: 0 4px 4px;
+    border-color: #6284d2;
+    margin: 0;
+}
+
+.wm-close {
+    right: 3px;
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    opacity: .6;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &,
+    &:focus,
+    &:hover,
+    &:active,
+    &:hover:active {
+        border: 1px solid #fff;
+    }
+
+    &,
+    &:focus {
+        background: linear-gradient(135deg,#f38569,#dd3701);
+        box-shadow: 1px 1px 4px #f1ac9a inset,-1px -1px 3px #c02800 inset;
+    }
+
+    &::after {
+        box-sizing: border-box;
+        border-radius: 3px;
+        border: 1px solid;
+        @include border-color-3d(#ec6747, #ac3213);
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M1 3l4 4-4 4 2 2 4-4 4 4 2-2-4-4 4-4-2-2-4 4-4-4z' fill='%23fff'/%3E%3C/svg%3E") no-repeat center center;
+    }
+
+    &:hover,
+    &:active {
+        background-image: radial-gradient(at 70% 70%,rgba(#fa4,.4),transparent 50%),linear-gradient(135deg,#ff9083,#f3583a);
+        box-shadow: 1px 1px 4px #ffbeb8 inset,-1px -1px 3px #e03e2c inset;
+        &::after {
+            @include border-color-3d(#ff6f5f, #da4c36);
+        }
+    }
+
+    &:hover:active {
+        background: linear-gradient(135deg,#bc3b1b,#ce5432);
+        box-shadow: 1px 1px 3px #852a13 inset;
+        &::after {
+            @include border-color-3d(#903118, #c4421e);
+        }
+    }
+}
+
+.wm-dlg.wm-active {
+    .wm-title {
+        background: linear-gradient(#3f97ff,#0071f8 15%,#0055ea 25%,#146af2 80%,#0150e0);
+        box-shadow: 0 -2px 6px 0 #0017c2 inset,0 1px 3px #7eadff inset;
+        border-color: #004ad8 #2139c9 transparent #001abc;
+    }
+
+    .wm-body {
+        border-color: #0019cf;
+    }
+
+    .wm-close {
+        opacity: 1;
+    }
+}
+
+.wm-grp {
+    border: 1px solid #ccb;
+    border-radius: 3px;
+
+    legend {
+        background-color: $colour-dialog;
+    }
+}
+
+.wm-btn {
+    &,
+    &:focus,
+    &:hover,
+    &:active {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #003c74;
+        border-radius: 3px;
+        background: linear-gradient(#fff,#eaeae5);
+    }
+
+    & {
+        box-shadow: -1px -1px 2px #d6d0c5 inset;
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: 0 0 0 2px rgba(#7ba1ed,.7) inset;
+    }
+
+    &:hover,
+    &:focus:active {
+        box-shadow: 0 0 0 2px rgba(#f7a71d,.7) inset;
+    }
+
+    &:hover:active {
+        background: linear-gradient(#e6e4dd,#efefe7);
+        box-shadow: 1px 1px 2px #c9c5bc inset, -1px -1px 2px #f4f4f2 inset;
+    }
+}
+
+.wm-cmb {
+    background: #fff;
+    border: 1px solid #7f9db9;
+
+    & > select {
+        padding-right: 24px;
+    }
+    &::before {
+        @extend %pseudo-box;
+        top: 1px;
+        right: 1px;
+        width: 20px;
+        height: #{"calc(100% - 2px)"};
+        pointer-events: none;
+        border: 1px solid #b8cbf6;
+        border-radius: 2px;
+        background: linear-gradient(135deg,#ddeaf9,#a7c2f5);
+    }
+
+    &:focus::before,
+    &:active::before,
+    &:hover::before {
+        border-color: #97aee2;
+        background: linear-gradient(135deg,#eefcff,#aed4f9);
+    }
+
+    &:hover:active::before {
+        @include border-color-3d(#98a1dd, #b9cbf3);
+        background: linear-gradient(135deg,#6e8ef1,#afbfed);
+    }
+
+    &::after {
+        border: solid #4d6185;
+        border-width: 0 2px 2px 0;
+        width: 5px;
+        height: 5px;
+        transform: rotate(45deg);
+        right: 8px;
+        top: 50%;
+        margin-top: -5px;
+    }
+}
+
+%common-checkbox {
+    position: relative;
+    background: linear-gradient(135deg,#dddddb,#fcfcfc);
+    border: 1px solid #1c5180;
+
+    &::before {
+        @extend %pseudo-box;
+        @include covered-box;
+    }
+
+    &:checked::after {
+        @extend %pseudo-box;
+    }
+
+    &:hover,
+    &:active {
+        &::before {
+            box-shadow: 0 0 0 2px rgba(#f9bc4a,.8) inset;
+        }
+    }
+
+    &:hover:active {
+        background: linear-gradient(135deg,#afafa7,#f2efe1);
+    }
+}
+
+.wm-chk {
+    @extend %common-checkbox;
+
+    &:checked::after {
+        box-sizing: initial;
+        border-color: #21a121;
+        border-style: solid;
+        border-width: 0 2px 2px 0;
+        left: #{"calc(.2em + 1px)"};
+        top: 0;
+        width: .2em;
+        height: .5em;
+        transform: rotate(45deg);
+    }
+}
+
+.wm-radio {
+    @extend %common-checkbox;
+
+    &::before,
+    &:checked::after {
+        border-radius: 100%;
+    }
+
+    &:checked::after {
+        background: radial-gradient(at 30% 30%,#5dea59,#45c341 33%,#24a220 80%,#169312);
+        left: 2px;
+        top: 2px;
+        width: #{"calc(100% - 4px)"};
+        height: #{"calc(100% - 4px)"};
+    }
+}
+
+.wm-textbox {
+    border: 1px solid #7f9db9;
+
+    &:read-only {
+        background: transparent;
+    }
+}
+
+.wm-tab {
+    border-bottom: 1px solid #919b9c;
+
+    > li {
+        border: solid #91a7b4;
+        border-width: 1px 1px 0 1px;
+        border-radius: 3px 3px 0 0;
+        background: linear-gradient(#fff,#eaeae5);
+        box-shadow: -1px 0 2px #d6d0c5 inset;
+
+        &.wm-active {
+            background: #fcfcfe;
+            box-shadow: none;
+        }
+
+        &.wm-active,
+        &:hover {
+            border-color: #e68b2c #919b9c;
+
+            &::before {
+                @extend %pseudo-box;
+                @include covered-box;
+                border-top: 2px solid rgba(#ffc333,.9);
+            }
+        }
+    }
+}
+
+.wm-tabpage {
+    border: solid #919b9c;
+    border-width: 0 1px 1px;
+    background: linear-gradient(#fcfcfe,#f4f3ee);
+    box-shadow: 1px 1px rgba(#aaa,.4);
+}
+
+@include progress {
+    background: linear-gradient(#fbfbfb,#efefef,#fbfbfb);
+    border: 1px solid #686868;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #bebebe inset,-1px -1px 1px #efefef inset;
+    padding: 2px;
+}
+
+@include progress-bar {
+    background: linear-gradient(#abedac,#28d22b,#8ee790);
+}
+
+}

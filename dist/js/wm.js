@@ -168,13 +168,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (typeof cx === 'number') {
         cx += 'px';
       }
-      style.width = cx;
-      if (cy != null) {
-        if (typeof cy === 'number') {
-          cy += 'px';
-        }
-        style.height = cy;
+      if (typeof cy === 'number') {
+        cy += 'px';
       }
+      style.width = cx || '';
+      style.height = cy || '';
       this._adjustLocation(el);
     };
 
@@ -342,7 +340,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _this.close = createElement('button', title, 'wm-close', {
         title: 'Close'
       });
-      _this.close.addEventListener('click', function () {
+      _this.close.addEventListener('click', function (e) {
+        e.preventDefault();
         _this.trigger('wm.close');
       }, false);
       mouseDownHandler = function mouseDownHandler(e) {
@@ -393,6 +392,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (role != null) {
         setRole(el, role);
       }
+      Object.defineProperty(_this2, 'visible', {
+        get: function get() {
+          return window.getComputedStyle(_this2.el).visibility !== 'hidden';
+        },
+        set: function set(v) {
+          return _this2.el.style.visibility = v ? 'visible' : 'hidden';
+        }
+      });
       return _this2;
     }
 
@@ -424,6 +431,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         },
         set: function set(v) {
           return _this4.el.value = v;
+        }
+      });
+      Object.defineProperty(_this4, 'disabled', {
+        get: function get() {
+          return _this4.el.disabled;
+        },
+        set: function set(v) {
+          return _this4.el.disabled = v;
         }
       });
       return _this4;
@@ -694,19 +709,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return FakeMap;
   }();
-  Dialog = function () {
-    function Dialog(owner, el) {
-      var _this16 = this;
+  Dialog = function (_EventHandler3) {
+    _inherits(Dialog, _EventHandler3);
 
+    function Dialog(owner, el) {
       _classCallCheck(this, Dialog);
 
       var T, body, cls, e, l, len, ref, selector;
-      this.owner = owner;
-      this.el = el;
-      this.active = false;
-      this.centre = true;
-      this.map = new FakeMap();
-      this.onResize = function () {
+
+      var _this16 = _possibleConstructorReturn(this, _EventHandler3.call(this, el));
+
+      _this16.owner = owner;
+      _this16.active = false;
+      _this16.centre = false;
+      _this16.map = new FakeMap();
+      _this16.onResize = function () {
         _this16._autoMove();
       };
       setRole(el, owner.modal ? 'alertdialog' : 'dialog');
@@ -723,29 +740,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         for (l = 0, len = ref.length; l < len; l++) {
           e = ref[l];
           cls = new T(e);
-          this._accessData(cls.el, cls);
+          _this16._accessData(cls.el, cls);
         }
       }
-      this._setResizeListener();
-      this._autoMove();
+      _this16.bind('.wm-ok,.wm-cancel', function (e) {
+        _this16.close(e.target.classList.contains('wm-ok'));
+      });
+      _this16._setCentre(true);
       el.classList.add('wm-shown');
+      return _this16;
     }
 
     Dialog.prototype.equals = function equals(src) {
       return this.el.isSameNode(src.el);
     };
 
-    Dialog.prototype.close = function close() {
-      //           if @trigger 'wm.closing'
-      this.owner._deleteDialog(this);
-      window.removeEventListener('resize', this.onResize, false);
+    Dialog.prototype.close = function close(reason) {
+      var evt;
+      evt = createEvent('wm.closing');
+      evt.reason = reason ? 'ok' : 'cancel';
+      this.trigger(evt);
+      if (evt.defaultPrevented === false) {
+        this.owner._deleteDialog(this);
+        window.removeEventListener('resize', this.onResize, false);
+        this.trigger('wm.closed');
+      }
       return this;
     };
 
     Dialog.prototype.move = function move(x, y) {
-      this.centre = false;
-      this._setResizeListener();
-      this.owner._moveElement(this.el, x, y);
+      var centre;
+      centre = !((typeof x === 'number' || x) && (typeof y === 'number' || y));
+      this._setCentre(centre);
+      if (!centre) {
+        this.owner._moveElement(this.el, x, y);
+      }
       return this;
     };
 
@@ -781,6 +810,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     Dialog.prototype.bind = function bind(selector, type, listener) {
+      if (typeof type !== 'string') {
+        listener = type;
+        type = 'click';
+      }
       this.findAll(selector).forEach(function (c) {
         c.on(type, listener);
       });
@@ -788,6 +821,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     Dialog.prototype.unbind = function unbind(selector, type, listener) {
+      if (typeof type !== 'string') {
+        listener = type;
+        type = 'click';
+      }
       this.findAll(selector).forEach(function (c) {
         c.off(type, listener);
       });
@@ -795,7 +832,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     Dialog.prototype._accessData = function _accessData(el, val) {
-      if (val === void 0) {
+      if (typeof val === 'undefined') {
         return this.map.get(el);
       }
       this.map.set(el, val);
@@ -836,15 +873,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
 
-    Dialog.prototype._setResizeListener = function _setResizeListener() {
-      if (this.centre) {
+    Dialog.prototype._setCentre = function _setCentre(centre) {
+      if (this.center === centre) {
+        return;
+      }
+      this.centre = centre;
+      if (centre) {
         window.addEventListener('resize', this.onResize, false);
       } else {
         window.removeEventListener('resize', this.onResize, false);
       }
+      this._autoMove();
     };
 
     return Dialog;
-  }();
+  }(EventHandler);
   return window.Desktop = Desktop;
 })(window, document);
