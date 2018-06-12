@@ -1108,6 +1108,9 @@
             box-shadow: 0 0 0 2px rgba(249, 188, 74, 0.8) inset; }
   .wm-tm-winxp .wm-chk:hover:active, .wm-tm-winxp .wm-radio:hover:active {
     background: linear-gradient(135deg, #afafa7, #f2efe1); }
+    .wm-tm-winxp .wm-chk:hover:active::before, .wm-tm-winxp .wm-radio:hover:active::before {
+      -webkit-box-shadow: none;
+              box-shadow: none; }
 
 .wm-tm-winxp .wm-chk:checked::after {
   -webkit-box-sizing: initial;

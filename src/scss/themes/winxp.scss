@@ -219,6 +219,9 @@ $colour-readonly: $colour-dialog;
 
     &:hover:active {
         background: linear-gradient(135deg,#afafa7,#f2efe1);
+        &::before {
+            box-shadow: none;
+        }
     }
 }
 
